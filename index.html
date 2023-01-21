@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yomi playground</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js" integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/dark.min.css" integrity="sha512-bfLTSZK4qMP/TWeS1XJAR/VDX0Uhe84nN5YmpKk5x8lMkV0D+LwbuxaJMYTPIV13FzEv4CUOhHoc+xZBDgG9QA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/json.min.js" integrity="sha512-0xYvyncS9OLE7GOpNBZFnwyh9+bq4HVgk4yVVYI678xRvE22ASicF1v6fZ1UiST+M6pn17MzFZdvVCI3jTHSyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <center>
+        <img src="https://cdn-icons-png.flaticon.com/512/1864/1864652.png" width="100" style="margin-top: 15px;" alt="">
+        <h1 style="margin-top: -4px;">Yomi demo</h1>
+        <p>Input the text you'd like to analyze. See the <a href="https://github.com/ookii-tsuki/yomi" target="_blank">Yomi API</a> docs for more details.</p>
+        <form method="post">
+            <textarea placeholder="" spellcheck="false" maxlength="5000"></textarea>
+            <br>
+            <select name="mode" id="">
+                <option value="normal">Normal</option>
+                <option value="spaced">Spaced</option>
+                <option value="okurigana">Okurigana</option>
+                <option value="furigana">Furigana</option>
+            </select>
+            <select name="to" id="">
+                <option value="hiragana">Hiragana</option>
+                <option value="katakana">Katakana</option>
+                <option value="romaji">Romaji</option>
+            </select>
+            <select name="romaji-system" id="">
+                <option value="hepburn">Hepburn</option>
+                <option value="kunrei">Kunrei</option>
+            </select>
+            <input type="submit" value="Submit">
+            <div class="char-counter">0/5000</div>
+        </form>
+        <div class="result"></div>
+        <pre class="code-snippet">
+            <code class="json" align="left"></code>
+        </pre>
+    </center>
+    <script src="./main.js"></script>
+</body>
+</html>
