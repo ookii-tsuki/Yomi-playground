@@ -6,16 +6,16 @@ const submitBtn = document.querySelector('input[type="submit"]');
 
 document.querySelector('form').addEventListener('submit', e => {
     e.preventDefault();
-
-    submitBtn.setAttribute('disabled', '');
-
+    
     if (inputField.value != '') {
         if (!hasJapanese(inputField.value)) {
             inputField.value = 'Must contain a Japense text';
             inputField.style.color = '#e44646';
-            inputField.style.border = '1px solid #e44646';
+            inputField.style.borderColor = '#e44646';
             return false;
         }
+
+        submitBtn.setAttribute('disabled', '');
 
         fetch('https://yomi.onrender.com/analyze', {
             method: 'POST',
@@ -31,15 +31,16 @@ document.querySelector('form').addEventListener('submit', e => {
 
                 document.querySelector('.result').innerHTML = json.converted;
                 document.querySelector('.code-snippet code').textContent = JSON.stringify(json, null, 2);
-                hljs.initHighlightingOnLoad();
+                hljs.highlightAll();
 
                 submitBtn.removeAttribute('disabled');
             })
-    } else {
-        inputField.value = 'Type something';
-        inputField.style.color = '#e44646';
-        inputField.style.border = '1px solid #e44646';
-    }
+        } else {
+            inputField.value = 'Type something';
+            inputField.style.color = '#e44646';
+            inputField.style.borderColor = '#e44646';
+        }
+    return false;
 });
 
 document.addEventListener('click', () => {
