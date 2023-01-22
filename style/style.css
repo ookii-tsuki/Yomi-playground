@@ -103,11 +103,13 @@ a:hover {
 
 @media (max-width: 768px) {
   body {
-    text-align: center;
     display: flex;
     align-items: center;
   }
   .code-snippet {
     width: 5in;
+  }
+  textarea {
+    width: 4.55in;
   }
 }/*# sourceMappingURL=style.css.map */

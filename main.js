@@ -2,9 +2,12 @@ const inputField = document.querySelector('textarea');
 const selectMode = document.querySelector('select[name="mode"]');
 const selectTo = document.querySelector('select[name="to"]');
 const selectRS = document.querySelector('select[name="romaji-system"]');
+const submitBtn = document.querySelector('input[type="submit"]');
 
 document.querySelector('form').addEventListener('submit', e => {
     e.preventDefault();
+
+    submitBtn.setAttribute('disabled', '');
 
     if (inputField.value != '') {
         if (!hasJapanese(inputField.value)) {
@@ -27,8 +30,10 @@ document.querySelector('form').addEventListener('submit', e => {
                 console.log(json);
 
                 document.querySelector('.result').innerHTML = json.converted;
-                document.querySelector('.code-snippet code').innerHTML = JSON.stringify(json, null, 2);
+                document.querySelector('.code-snippet code').textContent = JSON.stringify(json, null, 2);
                 hljs.initHighlightingOnLoad();
+
+                submitBtn.removeAttribute('disabled');
             })
     } else {
         inputField.value = 'Type something';
