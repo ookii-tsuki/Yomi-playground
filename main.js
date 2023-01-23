@@ -6,7 +6,7 @@ const submitBtn = document.querySelector('input[type="submit"]');
 
 document.querySelector('form').addEventListener('submit', e => {
     e.preventDefault();
-    
+
     if (inputField.value != '') {
         if (!hasJapanese(inputField.value)) {
             inputField.value = 'Must contain a Japense text';
@@ -35,16 +35,22 @@ document.querySelector('form').addEventListener('submit', e => {
 
                 submitBtn.removeAttribute('disabled');
             })
-        } else {
-            inputField.value = 'Type something';
-            inputField.style.color = '#e44646';
-            inputField.style.borderColor = '#e44646';
-        }
+            .catch(() => {
+                inputField.value = 'Error';
+                inputField.style.color = '#e44646';
+                inputField.style.borderColor = '#e44646';
+                submitBtn.removeAttribute('disabled');
+            });
+    } else {
+        inputField.value = 'Type something';
+        inputField.style.color = '#e44646';
+        inputField.style.borderColor = '#e44646';
+    }
     return false;
 });
 
 document.addEventListener('click', () => {
-    if (/(type something|must contain a japense text)/gi.test(inputField.value)) {
+    if (/(type something|must contain a japense text|error)/gi.test(inputField.value)) {
         inputField.value = '';
         inputField.removeAttribute('style');
         charCounter.innerHTML = '0/5000';
